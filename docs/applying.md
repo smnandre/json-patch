@@ -6,7 +6,12 @@
 ## Operations
 
 ```php
+<?php
+
+require __DIR__.'/vendor/autoload.php';
+
 use Alto\JsonPatch\JsonPatch;
+
 
 $document = [
     'name' => 'Draft',
@@ -24,6 +29,13 @@ $patch = [
 ];
 
 $result = JsonPatch::apply($document, $patch);
+echo json_encode($result, JSON_THROW_ON_ERROR), "\n";
+```
+
+Output:
+
+```text
+{"name":"Published","tags":["php","json"],"author":"alice","owner":"alice"}
 ```
 
 - `add` inserts or replaces an object member and inserts into a list. The `-`
@@ -58,6 +70,11 @@ try {
     // Invalid operation, path, container type, or failed test.
 }
 ```
+
+Before retrying, correct the operation or pointer, ensure its parent container
+exists, and check that a failed `test` still describes the current document.
+Do not silently remove a failed precondition: decide whether the caller should
+reload the latest state or reject the requested change.
 
 Specific subclasses distinguish invalid operations, missing paths, container
 type mismatches, and failed `test` operations.

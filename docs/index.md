@@ -12,12 +12,13 @@ $patch = [
 ];
 
 $result = JsonPatch::apply($document, $patch);
+echo $result['status']; // published
 ```
 
 ## Introduction
 
 - [Installation](installation.md): install the package and verify the runtime.
-- [Getting started](getting-started.md): apply and generate a first patch.
+- [Getting started](getting-started.md): apply a first patch and inspect the result.
 
 ## Patching
 
@@ -28,3 +29,9 @@ $result = JsonPatch::apply($document, $patch);
 The package transforms in-memory values and JSON strings. Persistence,
 authorization, version storage, and conflict resolution remain application
 responsibilities.
+
+## Package
+
+- [Changelog](https://github.com/altophp/json-patch/blob/main/CHANGELOG.md)
+- [Contributing](https://github.com/altophp/json-patch/blob/main/CONTRIBUTING.md)
+- [Support](https://github.com/altophp/json-patch/blob/main/SUPPORT.md)
